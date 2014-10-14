@@ -1,5 +1,11 @@
 package zombiegame;
 
-public class Items extends ImageEntity {
+public class Items extends ImageEntity 
+{
+    public Items()
+    {
+        // Constructor
+    }
+    
     
 }
