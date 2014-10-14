@@ -7,9 +7,11 @@ package zombiegame;
 
 public class App {
 
+    static GameFrame gameFrame;
+
     public static void main(String args[]) {
-        
-        GameFrame gameFrame;
+                
+        gameFrame = new GameFrame();
         
     }
 }

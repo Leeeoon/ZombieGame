@@ -8,5 +8,14 @@ public class GameFrame extends JFrame {
 
     public GameFrame() {
         
+        containerPanel = new ContainerPanel();
+        JFrame application = new JFrame();
+
+        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        application.add(containerPanel);
+
+        application.setSize(500, 500);
+        application.setVisible(true);
     }
 }
