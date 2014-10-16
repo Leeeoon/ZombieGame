@@ -1,28 +1,34 @@
 package zombiegame;
 
 import javax.swing.*;
-import javax.swing.JRadioButton;
 //Updated: 10/15 by Graeson
-    //Need to find out the visibility for it
+//Need to find out the visibility for it
 public class OptionsPanel extends JPanel {
 
-   void setValues() {
-        JButton heroButtons;                          //If these are out of the setValues() method then they are considered
-        JButton backgroundButton;                     //static and it won't work
-        JRadioButton easy, hard;
-        ButtonGroup bg;                               //What is a button group
-        JButton beginGameButton;
+    JButton heroButtons;                          //If these are out of the setValues() method then they are considered
+    JButton backgroundButton;                     //static and it won't work
+    JRadioButton easy, hard;
+    ButtonGroup bg;
+    JButton beginGameButton;
 
-
+    public OptionsPanel(GamePanel gamePanel) {
+        beginGameButton = new JButton("Begin Game");
         heroButtons = new JButton("Hero");
-        backgroundButton = new JButton("Why?");       //Not sure what this is for
-        add(heroButtons);
-        add(backgroundButton);
-//Button Group
+        backgroundButton = new JButton("Background Button");       //Not sure what this is for
+
+//---------------------------------------------------Button Group
         easy = new JRadioButton("Easy");
         hard = new JRadioButton("hard");
         bg = new ButtonGroup();
+//---------------------------------------------------Adding the buttons        
+        add(heroButtons);
+        add(backgroundButton);
         bg.add(easy);
         bg.add(hard);
+
+
+    }
+
+    void setValues() {
     }
 }
