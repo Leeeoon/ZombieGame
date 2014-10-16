@@ -3,6 +3,7 @@ package zombiegame;
 import javax.swing.*;
 import javax.swing.JRadioButton;
 //Updated: 10/15 by Graeson
+    //Need to find out the visibility for it
 public class OptionsPanel extends JPanel {
 
    void setValues() {
