@@ -15,6 +15,22 @@ public class ContainerPanel extends JPanel implements ActionListener {
     
     public ContainerPanel() {
         
+        setLayout(null);
+        // Set up titlePanel ------------------------------------------
+        titlePanel = new TitlePanel();
+        titlePanel.setLayout(null);
+        titlePanel.setBounds(0, 0, 500, 500);
+        titlePanel.startButton.setBounds(225, 300, 50, 50);
+        titlePanel.add(titlePanel.startButton);
+        add(titlePanel);
+        // draw the string (titlePanel.welcomeMsg)
+        // ------------------------------------------------------------
+        
+        gamePanel = new GamePanel();
+        
+        // Set up optionsPanel ----------------------------------------
+        optionsPanel = new OptionsPanel(gamePanel);
+        
     }
     
     public void setPanelVisiblity() {
