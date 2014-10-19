@@ -11,9 +11,22 @@ public class ContainerPanel extends JPanel implements ActionListener {
     GamePanel gamePanel;
     OptionsPanel optionsPanel;
     Timer timer;
-    Graphics graphics;                          // Is this even needed?
     
     public ContainerPanel() {
+        
+        titlePanel = new TitlePanel();
+        endPanel = new EndPanel();
+        gamePanel = new GamePanel();
+        optionsPanel = new OptionsPanel(gamePanel);
+        //timer = new Timer();                          // will deal with later
+        
+        
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
         
     }
     
