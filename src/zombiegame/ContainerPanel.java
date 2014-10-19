@@ -13,7 +13,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
     Timer timer;
     
     public ContainerPanel() {
-        
+       
         setLayout(null);
         // Set up titlePanel ------------------------------------------
         titlePanel = new TitlePanel();
@@ -24,7 +24,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
         add(titlePanel);
         // draw the string (titlePanel.welcomeMsg)
         // ------------------------------------------------------------
-        
+    
         gamePanel = new GamePanel();
         
         // Set up optionsPanel ----------------------------------------
