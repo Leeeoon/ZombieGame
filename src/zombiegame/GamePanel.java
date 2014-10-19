@@ -6,16 +6,47 @@ import java.util.*;
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements KeyListener {
-
+    
+    Random r;
     Hero hero;
     Zombie zombie;
     BucketPanel bucket;
     Items items;
     int difficulty;
     
-    public GamePanel()
+    final static int EASY_DIFFICULTY = 0;
+    final static int HARD_DIFFICULTY = 1;
+    
+    int heroCurrentX;
+    int heroCurrentY;
+    
+    int zombieCurrentX;
+    int zombieCurrentY;
+    
+    public GamePanel() 
     {
-        // Constructor
+        r = new Random();
+        hero = new Hero();
+        zombie = new Zombie();
+        bucket = new BucketPanel();
+        items = new Items();
+        difficulty = EASY_DIFFICULTY;
+        
+        heroCurrentX = hero.x;
+        heroCurrentY = hero.y;
+        
+        zombieCurrentX = zombie.x;
+        zombieCurrentY = zombie.y;
+        
+        this.addKeyListener(this);
+        this.setFocusable(true);
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
+        g.drawImage(zombie.image, zombieCurrentX, zombieCurrentY, 50, 50, null);
     }
     
     void setPlayer()
@@ -33,13 +64,23 @@ public class GamePanel extends JPanel implements KeyListener {
         
     }
     
+    @Override
+    public void keyPressed(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+           heroCurrentX++;
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT ) {
+           heroCurrentX--;
+    } else if (e.getKeyCode() == KeyEvent.VK_UP ) {
+            heroCurrentY--;
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN ) {
+            heroCurrentY++;
+    }
+
+    repaint();
+    }
     
     @Override
     public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
     }
 
     @Override

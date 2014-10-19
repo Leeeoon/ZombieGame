@@ -12,6 +12,5 @@ public class App {
     public static void main(String args[]) {
                 
         gameFrame = new GameFrame();
-        // test
     }
 }
