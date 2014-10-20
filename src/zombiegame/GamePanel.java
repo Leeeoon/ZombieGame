@@ -77,16 +77,44 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
-           heroCurrentX++;
+        if (heroCurrentX < 450)
+        {
+           heroCurrentX += 4;
+        }
+        else 
+        {
+            heroCurrentX += 0;
+        }
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT ) {
-           heroCurrentX--;
+        if (heroCurrentX > 0)
+        {
+           heroCurrentX -= 4;
+        }
+        else
+        {
+            heroCurrentX += 0;
+        }
     } else if (e.getKeyCode() == KeyEvent.VK_UP ) {
-            heroCurrentY--;
+        if (heroCurrentY > 0)
+        {
+            heroCurrentY -= 4;
+        }
+        else
+        {
+            heroCurrentY += 0;
+        }
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN ) {
-            heroCurrentY++;
+        if (heroCurrentY < 350)
+        {
+            heroCurrentY += 4;
+        }
+        else
+        {
+            heroCurrentY += 0;
+        }
     }
 
-    zombie.move(heroCurrentX, heroCurrentY);
+    //zombie.move(heroCurrentX, heroCurrentY);
     repaint();
     }
     

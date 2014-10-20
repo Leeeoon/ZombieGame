@@ -12,9 +12,15 @@ public class ContainerPanel extends JPanel implements ActionListener {
     GamePanel gamePanel;
     OptionsPanel optionsPanel;
     Timer timer;
+    int delay;
     
     public ContainerPanel() {
                
+        // Set up timer
+        delay = 20; // default for easy
+        timer = new Timer(delay, this);
+        //timer.start();
+        
         setLayout(null);
         // Set up titlePanel ------------------------------------------
         titlePanel = new TitlePanel();
@@ -106,6 +112,14 @@ public class ContainerPanel extends JPanel implements ActionListener {
             System.out.println("Options panel invisible");
             gamePanel.setVisible(true);
             System.out.println("Game panel visible");
+            timer.start();
+        }
+        
+        if (e.getSource() == timer)
+        {
+            System.out.println("Timer");
+            gamePanel.zombie.move(gamePanel.heroCurrentX, gamePanel.heroCurrentY);
+            repaint();
         }
     
     }
