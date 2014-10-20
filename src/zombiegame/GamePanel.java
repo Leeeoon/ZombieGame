@@ -10,7 +10,7 @@ public class GamePanel extends JPanel implements KeyListener {
     Random r;
     Hero hero;
     Zombie zombie;
-    BucketPanel bucket;
+    BucketPanel bucketPanel;
     Items items;
     int difficulty;
     
@@ -28,7 +28,6 @@ public class GamePanel extends JPanel implements KeyListener {
         r = new Random();
         hero = new Hero();
         zombie = new Zombie();
-        bucket = new BucketPanel();
         items = new Items();
         difficulty = EASY_DIFFICULTY;
         
@@ -40,6 +39,17 @@ public class GamePanel extends JPanel implements KeyListener {
         
         this.addKeyListener(this);
         this.setFocusable(true);
+        
+        
+        
+        // Layout shit - Dana 10/19
+        // Layout, visible, bounds already set in containerPanel
+        // Bucket shit
+        bucketPanel = new BucketPanel();
+        bucketPanel.setLayout(new GridLayout(1, 4));
+        //Items item1
+        
+        
     }
     
     @Override
