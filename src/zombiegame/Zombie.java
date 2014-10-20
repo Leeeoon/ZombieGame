@@ -15,9 +15,41 @@ public class Zombie extends ImageEntity
        }
     }
     
-    public void move() // may change to protected
+    public void move(int heroX, int heroY) // may change to protected
     {
+        int moveX = 0;
+        int moveY = 0;
         
+        if (this.x - heroX < 0) // hero is to the right
+        {
+            moveX = 1;
+        }
+        else if (this.x - heroX > 0) // hero is to the left
+        {
+            moveX = -1;
+        }
+        else // hero is directly above or below zombie
+        {
+            moveX = 0;
+        }
+        
+        if (this.y - heroY < 0) // hero is below zombie
+        {
+            moveY = 1;
+        }
+        else if (this.y - heroY > 0) // hero is above zombie
+        {
+            moveY = -1;
+        }
+        else // hero is directly to the right or left of zombie
+        {
+            moveY = 0;
+        }
+        
+        this.x += moveX;
+        this.y += moveY;
+        System.out.println("Hero: " + heroX + "  " + heroY);
+        System.out.println("Zombie moved " + moveX + "   " + moveY);
         
     }
     

@@ -34,8 +34,8 @@ public class GamePanel extends JPanel implements KeyListener {
         heroCurrentX = hero.x;
         heroCurrentY = hero.y;
         
-        zombieCurrentX = zombie.x;
-        zombieCurrentY = zombie.y;
+        /*zombieCurrentX = zombie.x;
+        zombieCurrentY = zombie.y;*/
         
         this.addKeyListener(this);
         this.setFocusable(true);
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
-        g.drawImage(zombie.image, zombieCurrentX, zombieCurrentY, 50, 50, null);
+        g.drawImage(zombie.image, zombie.x, zombie.y, 50, 50, null);
     }
     
     void setPlayer()
@@ -86,6 +86,7 @@ public class GamePanel extends JPanel implements KeyListener {
             heroCurrentY++;
     }
 
+    zombie.move(heroCurrentX, heroCurrentY);
     repaint();
     }
     

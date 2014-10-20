@@ -16,8 +16,8 @@ public class ImageEntity
     public ImageEntity()
     {
         r = new Random();
-        x = r.nextInt(450);
-        y = r.nextInt(450);
+        x = r.nextInt(300);
+        y = r.nextInt(300);
     }
     
     public void checkCollisions()
