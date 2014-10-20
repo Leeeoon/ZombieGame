@@ -14,7 +14,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
     Timer timer;
     
     public ContainerPanel() {
-       
+               
         setLayout(null);
         // Set up titlePanel ------------------------------------------
         titlePanel = new TitlePanel();
@@ -26,10 +26,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
         titlePanel.add(titlePanel.startButton);
         add(titlePanel);
         // draw the string (titlePanel.welcomeMsg)
-        // ------------------------------------------------------------
-    
-        gamePanel = new GamePanel();
-        
+        // ------------------------------------------------------------        
         // Set up optionsPanel ----------------------------------------
         optionsPanel = new OptionsPanel(gamePanel);
         optionsPanel.setVisible(false);
@@ -69,10 +66,9 @@ public class ContainerPanel extends JPanel implements ActionListener {
         
         add(optionsPanel);
         // ------------------------------------------------------------
-        
         // Set up game panel ------------------------------------------
+        gamePanel = new GamePanel();
         gamePanel.setLayout(null);
-        gamePanel.setVisible(false);
         gamePanel.setBounds(0, 0, 500, 400);
         add(gamePanel);
         

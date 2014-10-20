@@ -17,7 +17,7 @@ public class Hero extends ImageEntity
     
     public void move()
     {
-        
+        // not used
     }
     
     
