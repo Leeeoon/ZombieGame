@@ -48,8 +48,6 @@ public class Zombie extends ImageEntity
         
         this.x += moveX;
         this.y += moveY;
-        System.out.println("Hero: " + heroX + "  " + heroY);
-        System.out.println("Zombie moved " + moveX + "   " + moveY);
         
     }
     

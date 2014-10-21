@@ -74,8 +74,8 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // ------------------------------------------------------------
         // Set up game panel ------------------------------------------
         gamePanel = new GamePanel();
-        gamePanel.setLayout(null);
-        gamePanel.setBounds(0, 0, 500, 400);
+        //gamePanel.setLayout(null);
+        //gamePanel.setBounds(0, 0, 500, 400);
         add(gamePanel);
         
     }
@@ -101,23 +101,18 @@ public class ContainerPanel extends JPanel implements ActionListener {
         if (e.getSource() == titlePanel.startButton)
         {
             titlePanel.setVisible(false);
-            System.out.println("Title panel invisible");
             optionsPanel.setVisible(true);
-            System.out.println("Options panel visible");
         }
         
         if (e.getSource() == optionsPanel.beginGameButton)
         {
             optionsPanel.setVisible(false);
-            System.out.println("Options panel invisible");
             gamePanel.setVisible(true);
-            System.out.println("Game panel visible");
             timer.start();
         }
         
         if (e.getSource() == timer)
         {
-            System.out.println("Timer");
             gamePanel.zombie.move(gamePanel.heroCurrentX, gamePanel.heroCurrentY);
             repaint();
         }
