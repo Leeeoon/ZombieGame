@@ -10,13 +10,15 @@ public class Hero extends ImageEntity {
         
         try {
             image = ImageIO.read(new File("Crazy Dave.png"));
+            image2 = ImageIO.read(new File("peashooter2.png"));
+            image3 = ImageIO.read(new File("Ice Plant.png"));
         } catch (IOException e) {
 
         }
     }
 
     public void move() {
-        // not used
+        
     }
 
 }
