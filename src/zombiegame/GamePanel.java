@@ -5,8 +5,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class GamePanel extends JPanel implements KeyListener
-{
+public class GamePanel extends JPanel implements KeyListener {
 
     Random r;
     Hero hero;
@@ -15,21 +14,17 @@ public class GamePanel extends JPanel implements KeyListener
     Items items;
     int difficulty;
     Image coinImage;
-
     final static int EASY_DIFFICULTY = 0;
     final static int HARD_DIFFICULTY = 1;
-
     int heroCurrentX;
     int heroCurrentY;
-
     int zombieCurrentX;
     int zombieCurrentY;
-
     Items item1, item2, item3, item4;
     JButton button1, button2, button3, button4;
+    int characterChoosen = 1;                                          //new
 
-    public GamePanel()
-    {
+    public GamePanel() {
         r = new Random();
         hero = new Hero();
         zombie = new Zombie();
@@ -67,7 +62,7 @@ public class GamePanel extends JPanel implements KeyListener
         button3.setIcon(new ImageIcon(coinImage));
         button4 = new JButton();
         button4.setIcon(new ImageIcon(coinImage));
-        
+
         bucketPanel.add(button1);
         bucketPanel.add(button2);
         bucketPanel.add(button3);
@@ -77,10 +72,19 @@ public class GamePanel extends JPanel implements KeyListener
     }
 
     @Override
-    public void paintComponent(Graphics g)
-    {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
+//------------------------------------------------Painting the correct character        
+        if (characterChoosen == 1) {
+            g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
+        }
+        if (characterChoosen == 2) {
+            g.drawImage(hero.image2, heroCurrentX, heroCurrentY, 50, 50, null);
+        }
+        if (characterChoosen == 3) {
+            g.drawImage(hero.image3, heroCurrentX, heroCurrentY, 50, 50, null);
+        }
+//------------------------------------------------------------------------------
         g.drawImage(zombie.image, zombie.x, zombie.y, 50, 50, null);
 
         // Draw line to separate game field from bucket panel
@@ -93,81 +97,57 @@ public class GamePanel extends JPanel implements KeyListener
         g.drawImage(item4.image, item4.x, item4.y, 50, 50, null);
     }
 
-    void setPlayer()
-    {
-
+    void setPlayer() {
     }
 
-    void setDifficulty()
-    {
-
+    void setDifficulty() {
     }
 
-    void setBackground()
-    {
-
+    void setBackground() {
     }
 
     @Override
-    public void keyPressed(KeyEvent e)
-    {
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-        {
-            if (heroCurrentX < 450)
-            {
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if (heroCurrentX < 450) {
                 heroCurrentX += 4;
-            } else
-            {
+            } else {
                 heroCurrentX += 0;
             }
-        } else
-        {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT)
-            {
-                if (heroCurrentX > 0)
-                {
+        } else {
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (heroCurrentX > 0) {
                     heroCurrentX -= 4;
-                } else
-                {
+                } else {
                     heroCurrentX += 0;
                 }
-            } else
-            {
-                if (e.getKeyCode() == KeyEvent.VK_UP)
-                {
-                    if (heroCurrentY > 0)
-                    {
+            } else {
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    if (heroCurrentY > 0) {
                         heroCurrentY -= 4;
-                    } else
-                    {
+                    } else {
                         heroCurrentY += 0;
                     }
-                } else
-                {
-                    if (e.getKeyCode() == KeyEvent.VK_DOWN)
-                    {
-                        if (heroCurrentY < 350)
-                        {
+                } else {
+                    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                        if (heroCurrentY < 350) {
                             heroCurrentY += 4;
-                        } else
-                        {
+                        } else {
                             heroCurrentY += 0;
                         }
                     }
                 }
             }
         }
+     
         repaint();
     }
 
     @Override
-    public void keyTyped(KeyEvent e)
-    {
+    public void keyTyped(KeyEvent e) {
     }
 
     @Override
-    public void keyReleased(KeyEvent e)
-    {
+    public void keyReleased(KeyEvent e) {
     }
-
 }

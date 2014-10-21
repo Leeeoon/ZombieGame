@@ -13,20 +13,20 @@ public class ContainerPanel extends JPanel implements ActionListener {
     OptionsPanel optionsPanel;
     Timer timer;
     int delay;
-    
+
     public ContainerPanel() {
-               
+
         // Set up timer
         delay = 20; // default for easy
         timer = new Timer(delay, this);
         //timer.start();
-        
+
         setLayout(null);
         // Set up titlePanel ------------------------------------------
         titlePanel = new TitlePanel();
         titlePanel.setLayout(null);
         titlePanel.setBounds(0, 0, 500, 500);
-        
+
         titlePanel.startButton.setBounds(225, 300, 50, 50);
         titlePanel.startButton.addActionListener(this);
         titlePanel.add(titlePanel.startButton);
@@ -38,7 +38,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
         optionsPanel.setVisible(false);
         optionsPanel.setLayout(null);
         optionsPanel.setBounds(0, 0, 500, 500);
-        
+
         // Hero options
         // ---- Choose your hero
         optionsPanel.heroButtons.setBounds(25, 50, 165, 30);
@@ -46,7 +46,17 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // ---- Hero option 1
         optionsPanel.hero1.setBounds(200, 40, 50, 50);
         optionsPanel.add(optionsPanel.hero1);
-        
+        optionsPanel.hero1.addActionListener(this);
+        // ---- Hero option 2
+        optionsPanel.hero2.setBounds(260, 40, 50, 50);
+        optionsPanel.add(optionsPanel.hero2);
+        optionsPanel.hero2.addActionListener(this);
+        // ---- Hero option 3
+        optionsPanel.hero3.setBounds(320, 40, 50, 50);
+        optionsPanel.add(optionsPanel.hero3);
+        optionsPanel.hero3.addActionListener(this);
+
+
         // Background options
         // ---- Choose background
         optionsPanel.backgroundButtons.setBounds(25, 130, 165, 30);
@@ -54,7 +64,13 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // ---- Background option 1
         optionsPanel.background1.setBounds(200, 120, 50, 50);
         optionsPanel.add(optionsPanel.background1);
-        
+        // ---- Background option 2
+        optionsPanel.background2.setBounds(260, 120, 50, 50);
+        optionsPanel.add(optionsPanel.background2);
+        // ---- Background option 3
+        optionsPanel.background3.setBounds(320, 120, 50, 50);
+        optionsPanel.add(optionsPanel.background3);
+
         // Difficulty options
         optionsPanel.difficultyButtons.setBounds(25, 210, 165, 30);
         optionsPanel.add(optionsPanel.difficultyButtons);
@@ -64,12 +80,12 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // Difficulty: hard
         optionsPanel.hard.setBounds(300, 210, 100, 30);
         optionsPanel.add(optionsPanel.hard);
-        
+
         // Begin game button
         optionsPanel.beginGameButton.setBounds(200, 300, 100, 75);
         optionsPanel.add(optionsPanel.beginGameButton);
         optionsPanel.beginGameButton.addActionListener(this);
-        
+
         add(optionsPanel);
         // ------------------------------------------------------------
         // Set up game panel ------------------------------------------
@@ -77,47 +93,63 @@ public class ContainerPanel extends JPanel implements ActionListener {
         //gamePanel.setLayout(null);
         //gamePanel.setBounds(0, 0, 500, 400);
         add(gamePanel);
-        
+
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }
-    
+
     public void setPanelVisiblity() {
-        
-        
     }
-    
+
     public void resetValues() {
-        
-        
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-    
-        if (e.getSource() == titlePanel.startButton)
-        {
+
+        if (e.getSource() == titlePanel.startButton) {
             titlePanel.setVisible(false);
             optionsPanel.setVisible(true);
+           // System.out.println("START");
         }
-        
-        if (e.getSource() == optionsPanel.beginGameButton)
-        {
+
+        if (e.getSource() == optionsPanel.beginGameButton) {
             optionsPanel.setVisible(false);
             gamePanel.setVisible(true);
             timer.start();
         }
-        
-        if (e.getSource() == timer)
-        {
-            gamePanel.zombie.move(gamePanel.heroCurrentX, gamePanel.heroCurrentY);
-            repaint();
+        if (e.getSource() == optionsPanel.hero1) {//added to set a character number
+            gamePanel.characterChoosen = 1;
+           // System.out.println("Picked 1");
         }
-    
-    }
-    
-}
+        if (e.getSource() == optionsPanel.hero2) {
+            gamePanel.characterChoosen = 2;
+           // System.out.println("Picked 2");
 
+        }
+        if (e.getSource() == optionsPanel.hero3) {
+            gamePanel.characterChoosen = 3;
+           // System.out.println("Picked 3");
+        }
+        if (e.getSource() == optionsPanel.background1){
+            //stuff
+        }
+        if (e.getSource() == optionsPanel.background2){
+            //stuff
+        }
+        if (e.getSource() == optionsPanel.background3){
+            //stuff
+        }
+        if (e.getSource() == timer) {
+            gamePanel.zombie.move(gamePanel.heroCurrentX, gamePanel.heroCurrentY);
+           // gamePanel.zombieCurrentX = gamePanel.heroCurrentX;
+          //  gamePanel.zombieCurrentY = gamePanel.heroCurrentY;
+            repaint();
+            
+        }
+
+    }
+}

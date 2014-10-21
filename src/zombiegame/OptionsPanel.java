@@ -13,11 +13,10 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
     ButtonGroup difficulty; // Renamed from "bg" to "difficulty" to avoid confusion
     JButton beginGameButton;
     JButton difficultyButtons;
-    
+    // int characterChoosen;                              //Created for matching the characters
     String whoIsHero;
     int whatIsDifficulty;
     String whatIsBackground;
-
     // Adding separate buttons for the hero/background images - Dana
     JButton hero1; // will add more later
     JButton hero2;
@@ -25,7 +24,6 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
     JButton background1; // will add more later
     JButton background2;
     JButton background3;
-    
     GamePanel gamePanel;
 
     public OptionsPanel(GamePanel gamePanel) {
@@ -34,7 +32,10 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
         heroButtons = new JButton("Choose your hero:");
         hero1 = new JButton("1");
         hero2 = new JButton("2");
+        hero3 = new JButton("3");
         background1 = new JButton("1");
+        background2 = new JButton("2");
+        background3 = new JButton("3");
         backgroundButtons = new JButton("Choose background:");       //Not sure what this is for
 //---------------------------------------------------Button Group
         difficultyButtons = new JButton("Choose difficulty:");
@@ -51,15 +52,16 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if (e.getSource() == hero1) {
             whoIsHero = "Crazy Dave";
+            //GamePanel.characterChoosen = 1;
         }
         if (e.getSource() == hero2) {
-            whoIsHero = "Peashooter";
+            whoIsHero = "Pea Shooter";
         }
         if (e.getSource() == hero3) {
-            whoIsHero = "Sunflower";
+            whoIsHero = "Ice Plant";
         }
         if (e.getSource() == background1) {
             whatIsBackground = "grass";
@@ -83,8 +85,5 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
     }
 
     void setValues() {
-        
-        
     }
-
 }
