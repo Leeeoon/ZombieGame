@@ -112,7 +112,37 @@ public class ContainerPanel extends JPanel implements ActionListener {
     public void setPanelVisiblity() {
     }
 
-    public void resetValues() {
+    public void resetValues() 
+    {
+        // Re-enable coin buttons
+            gamePanel.button1.setEnabled(true);
+            gamePanel.button2.setEnabled(true);
+            gamePanel.button3.setEnabled(true);
+            gamePanel.button4.setEnabled(true);
+            
+            // Reset visibility of coin images
+            
+            
+            // Move hero back to center
+            gamePanel.hero.x = 225;
+            gamePanel.hero.y = 175;
+            
+            // Move zombie back to random corner
+            
+            
+            // Reassign coin locations
+            
+            
+            
+            // Reset visibility of all panels
+            gamePanel.setVisible(false);
+            endPanel.setVisible(false);
+            optionsPanel.setVisible(false);
+            titlePanel.setVisible(true);
+            
+            // Stop timer
+            timer.stop();
+            
     }
 
     @Override
@@ -146,6 +176,12 @@ public class ContainerPanel extends JPanel implements ActionListener {
         if (e.getSource() == optionsPanel.hero3) {
             gamePanel.characterChoosen = 3;
         }
+        
+        if (e.getSource() == endPanel.restartButton)
+        {
+            resetValues();
+        }
+        
 
         if (e.getSource() == optionsPanel.background1) {
             color = Color.BLUE;
