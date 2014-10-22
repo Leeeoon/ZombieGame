@@ -15,6 +15,11 @@ public class Zombie extends ImageEntity
        }
     }
     
+    public void startingPosition()
+    {
+        // Leon's a child
+    }
+    
     public void move(int heroX, int heroY) // may change to protected
     {
         int moveX = 0;
