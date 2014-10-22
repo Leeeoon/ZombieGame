@@ -4,16 +4,14 @@ import javax.swing.*;
 
 public class EndPanel extends JPanel {
 
-    JButton exitButton;
-    JButton restartButton;
+    JButton exitButton;                                                 //Not Used
+    JButton restartButton;                                              //Not Used
 
     public EndPanel() {
         exitButton = new JButton("EXIT");                            //Creating the buttons
         restartButton = new JButton("Restart");                      //They aren't being used right now
         
         JPanel myPanel = new JPanel();
-        //myPanel.add(exitButton);                                   //These can be added if needed
-        // myPanel.add(restartButton);
 //-------------------------------------------------------------------Renaming the preset "ok" and "cancel" buttons
         UIManager.put("OptionPane.cancelButtonText", "EXIT GAME");
         UIManager.put("OptionPane.okButtonText", "RESTART"); 

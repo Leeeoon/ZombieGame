@@ -25,6 +25,7 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
     JButton background2;
     JButton background3;
     GamePanel gamePanel;
+    boolean zombieDifficultyEasy;
 
     public OptionsPanel(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -41,9 +42,11 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
         difficultyButtons = new JButton("Choose difficulty:");
         easy = new JRadioButton("Easy");
         hard = new JRadioButton("Hard");
-        /*difficulty = new ButtonGroup();
-         difficulty.add(easy);
-         difficulty.add(hard);*/
+        difficulty = new ButtonGroup();
+        difficulty.add(easy);
+        difficulty.add(hard);
+        easy.setSelected(true);
+        
 //---------------------------------------------------Adding the buttons        
         //add(heroButtons);
         //add(backgroundButtons);
@@ -55,7 +58,6 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
 
         if (e.getSource() == hero1) {
             whoIsHero = "Crazy Dave";
-            //GamePanel.characterChoosen = 1;
         }
         if (e.getSource() == hero2) {
             whoIsHero = "Pea Shooter";
@@ -63,14 +65,15 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
         if (e.getSource() == hero3) {
             whoIsHero = "Ice Plant";
         }
-        if (e.getSource() == background1) {
-            whatIsBackground = "grass";
+        if (e.getSource() == easy) {
+            easy.setSelected(true);
+            hard.setSelected(false);
+            zombieDifficultyEasy = true;
         }
-        if (e.getSource() == background2) {
-            whatIsBackground = "night grass";
-        }
-        if (e.getSource() == background3) {
-            whatIsBackground = "lava";
+        if (e.getSource() == hard) {
+            easy.setSelected(false);
+            hard.setSelected(true);
+            zombieDifficultyEasy = false;
         }
     }
 

@@ -85,7 +85,7 @@ public class GamePanel extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-//------------------------------------------------Painting the correct character        
+//------------------------------------------------------------------------------Painting the correct character        
         if (characterChoosen == 1) {
             g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
         }

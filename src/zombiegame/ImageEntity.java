@@ -13,7 +13,6 @@ public class ImageEntity {
     Rectangle bounds;
     int x;
     int y;
-    // GamePanel gamePanel;
 
     public ImageEntity() {
         r = new Random();
@@ -21,7 +20,5 @@ public class ImageEntity {
         y = r.nextInt(300);
     }
 
-    public void checkCollisions(int zX, int zY, int hX, int hY) {
     
-    }
 }
