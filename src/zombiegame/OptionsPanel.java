@@ -56,9 +56,9 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
         hero1.setIcon(new ImageIcon(crazyDave));
         hero2.setIcon(new ImageIcon(peashooter));
         hero3.setIcon(new ImageIcon(frostPeashooter));
-        background1 = new JButton("1");
-        background2 = new JButton("2");
-        background3 = new JButton("3");
+        background1 = new JButton("Blue");
+        background2 = new JButton("Yellow");
+        background3 = new JButton("Green");
         backgroundButtons = new JButton("Choose background:");       //Not sure what this is for
 //---------------------------------------------------Button Group
         difficultyButtons = new JButton("Choose difficulty:");

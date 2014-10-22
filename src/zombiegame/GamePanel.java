@@ -39,8 +39,8 @@ public class GamePanel extends JPanel implements KeyListener {
         items = new Items();
         difficulty = EASY_DIFFICULTY;                                           //For determining the difficulty
 
-        heroCurrentX = hero.x;
-        heroCurrentY = hero.y;
+        heroCurrentX = 225;
+        heroCurrentY = 175;
 
         this.addKeyListener(this);
         this.setFocusable(true);
