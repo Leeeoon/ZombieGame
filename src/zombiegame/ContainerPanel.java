@@ -128,7 +128,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
             gamePanel.hero.y = 175;
             
             // Move zombie back to random corner
-            
+            gamePanel.zombie.setStartingPosition();
             
             // Reassign coin locations
             
@@ -163,7 +163,9 @@ public class ContainerPanel extends JPanel implements ActionListener {
             } else {
                 delay = 15;
             }
-             timer.start();
+            
+            gamePanel.zombie.setStartingPosition();
+            timer.start();
         }
        
 
