@@ -15,9 +15,28 @@ public class Zombie extends ImageEntity
        }
     }
     
-    public void startingPosition()
+    public void setStartingPosition()
     {
-        // Leon's a child
+        int randomCorner = (int) (Math.random() * 4);
+        switch (randomCorner)
+        {
+            case 0: 
+                this.x = 0;
+                this.y = 0;
+                break;
+            case 1:
+                this.x = 450;
+                this.y = 0;
+                break;
+            case 2:
+                this.x = 0;
+                this.y = 350;
+                break;
+            case 3:
+                this.x = 450;
+                this.y = 350;
+                break;
+        }
     }
     
     public void move(int heroX, int heroY) // may change to protected
