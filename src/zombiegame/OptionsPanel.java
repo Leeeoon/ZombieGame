@@ -1,7 +1,11 @@
 package zombiegame;
 
+import java.awt.Image;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 //Updated: 10/15 by Graeson
 //Need to find out the visibility for it
 
@@ -26,14 +30,32 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
     JButton background3;
     GamePanel gamePanel;
     boolean zombieDifficultyEasy;
+    
+    Image crazyDave;
+    Image peashooter;
+    Image frostPeashooter;
 
     public OptionsPanel(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        
+        try {                
+          crazyDave = ImageIO.read(new File("Crazy Dave.png"));
+          peashooter = ImageIO.read(new File("peashooter2.png"));
+          frostPeashooter = ImageIO.read(new File("Ice Plant.png"));
+       } catch (IOException e) {
+       
+       }
+        crazyDave = crazyDave.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+        peashooter = peashooter.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+        frostPeashooter = frostPeashooter.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
         beginGameButton = new JButton("Begin Game");
         heroButtons = new JButton("Choose your hero:");
-        hero1 = new JButton("1");
-        hero2 = new JButton("2");
-        hero3 = new JButton("3");
+        hero1 = new JButton();
+        hero2 = new JButton();
+        hero3 = new JButton();
+        hero1.setIcon(new ImageIcon(crazyDave));
+        hero2.setIcon(new ImageIcon(peashooter));
+        hero3.setIcon(new ImageIcon(frostPeashooter));
         background1 = new JButton("1");
         background2 = new JButton("2");
         background3 = new JButton("3");

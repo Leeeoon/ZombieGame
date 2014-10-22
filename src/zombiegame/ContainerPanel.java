@@ -176,11 +176,10 @@ public class ContainerPanel extends JPanel implements ActionListener {
         if (e.getSource() == optionsPanel.hero3) {
             gamePanel.characterChoosen = 3;
         }
-        
+        /*
         if (e.getSource() == endPanel.restartButton)
         {
-            resetValues();
-        }
+        }*/
         
 
         if (e.getSource() == optionsPanel.background1) {
