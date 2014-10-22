@@ -1,31 +1,40 @@
 package zombiegame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class EndPanel extends JPanel {
+public class EndPanel extends JPanel implements ActionListener {
 
-    JButton exitButton;                                                 //Not Used
-    JButton restartButton;                                              //Not Used
+    JButton exitButton;
+    JButton restartButton;
 
     public EndPanel() {
-        exitButton = new JButton("EXIT");                            //Creating the buttons
-        restartButton = new JButton("Restart");                      //They aren't being used right now
-        
-        JPanel myPanel = new JPanel();
-//-------------------------------------------------------------------Renaming the preset "ok" and "cancel" buttons
-        UIManager.put("OptionPane.cancelButtonText", "EXIT GAME");
-        UIManager.put("OptionPane.okButtonText", "RESTART"); 
-        myPanel.add(new JLabel("Do You Want to Restart?"));
-//-------------------------------------------------------------------Displays the JOptionPane's parts
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "GAME OVER", JOptionPane.OK_CANCEL_OPTION);
-//-------------------------------------------------------------------        
-        if (result == JOptionPane.CANCEL_OPTION) {                   //This exits the game when it is over
-            System.exit(0);
-        }
-        if (result == JOptionPane.OK_OPTION) {                       //Sends the user back to te TitlePanel
-            
-        }
+
+        setLayout(null);
+
+        exitButton = new JButton("EXIT");
+        restartButton = new JButton("RESTART");
+
+        restartButton.setBounds(175, 150, 100, 50);
+        exitButton.setBounds(175, 250, 100, 50);
+
+        exitButton.addActionListener(this);
+        restartButton.addActionListener(this);
+
+        add(exitButton);
+        add(restartButton);
+
 
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == restartButton) {
+        }
+        if (e.getSource() == exitButton) {
+            System.exit(0);
+        }
+    }
 }
+

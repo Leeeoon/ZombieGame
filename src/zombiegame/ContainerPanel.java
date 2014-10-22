@@ -14,17 +14,17 @@ public class ContainerPanel extends JPanel implements ActionListener {
     Timer timer;
     int delay;                                                          //For setting the background color
     //--------------------------------------------------------------------------For setting the background color
-    Color color = Color.BLUE;
-    Color squareColor = Color.blue;
+    Color color = Color.WHITE;
+    Color squareColor = Color.white;
 
     public ContainerPanel() {
 
         // Set up timer
         delay = 20; // default for easy
         timer = new Timer(delay, this);
-       // timer.start();
 
         setLayout(null);
+
         // Set up titlePanel ------------------------------------------
         titlePanel = new TitlePanel();
         titlePanel.setLayout(null);
@@ -39,6 +39,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // Set up optionsPanel ----------------------------------------
         optionsPanel = new OptionsPanel(gamePanel);
         optionsPanel.setVisible(false);
+
         optionsPanel.setLayout(null);
         optionsPanel.setBounds(0, 0, 500, 500);
 
@@ -58,7 +59,6 @@ public class ContainerPanel extends JPanel implements ActionListener {
         optionsPanel.hero3.setBounds(320, 40, 50, 50);
         optionsPanel.add(optionsPanel.hero3);
         optionsPanel.hero3.addActionListener(this);
-
 
         // Background options
         // ---- Choose background
@@ -80,7 +80,6 @@ public class ContainerPanel extends JPanel implements ActionListener {
         optionsPanel.add(optionsPanel.background3);
         optionsPanel.background3.addActionListener(this);
 
-
         // Difficulty options
         optionsPanel.difficultyButtons.setBounds(25, 210, 165, 30);
         optionsPanel.add(optionsPanel.difficultyButtons);
@@ -101,6 +100,11 @@ public class ContainerPanel extends JPanel implements ActionListener {
         // Set up game panel ------------------------------------------
         gamePanel = new GamePanel();
         add(gamePanel);
+        endPanel = new EndPanel();
+        endPanel.setBounds(0, 0, 500, 500);
+        endPanel.setVisible(false);
+        endPanel.restartButton.addActionListener(this);
+        add(endPanel);
 
     }
 
@@ -112,42 +116,44 @@ public class ContainerPanel extends JPanel implements ActionListener {
     public void setPanelVisiblity() {
     }
 
-    public void resetValues() 
-    {
+    public void resetValues() {
         // Re-enable coin buttons
-            gamePanel.button1.setEnabled(true);
-            gamePanel.button2.setEnabled(true);
-            gamePanel.button3.setEnabled(true);
-            gamePanel.button4.setEnabled(true);
-            
-            // Reset visibility of coin images
-            
-            
-            // Move hero back to center
-            gamePanel.hero.x = 225;
-            gamePanel.hero.y = 175;
-            
-            // Move zombie back to random corner
-            gamePanel.zombie.setStartingPosition();
-            
-            // Reassign coin locations
-            
-            
-            
-            // Reset visibility of all panels
-            gamePanel.setVisible(false);
-            endPanel.setVisible(false);
-            optionsPanel.setVisible(false);
-            titlePanel.setVisible(true);
-            
-            // Stop timer
-            timer.stop();
-            
+
+        gamePanel.button1.setEnabled(true);
+        gamePanel.button2.setEnabled(true);
+        gamePanel.button3.setEnabled(true);
+        gamePanel.button4.setEnabled(true);
+        
+        // Reset visibility of coin images
+
+
+        // Move hero back to center
+        gamePanel.heroCurrentX = 225;
+        gamePanel.heroCurrentY = 175;
+
+        // Move zombie back to random corner
+        gamePanel.zombie.setStartingPosition();
+        gamePanel.zombieWins = false;
+
+        // Reassign coin locations
+        
+        // Reset visibility of all panels
+        gamePanel.setVisible(false);
+        endPanel.setVisible(false);
+        optionsPanel.setVisible(false);
+        titlePanel.setVisible(true);
+
+        // Stop timer
+        timer.stop();
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == endPanel.restartButton) {
 
+            resetValues();
+        }
         if (e.getSource() == titlePanel.startButton) {
             titlePanel.setVisible(false);
             optionsPanel.setVisible(true);
@@ -163,11 +169,11 @@ public class ContainerPanel extends JPanel implements ActionListener {
             } else {
                 delay = 15;
             }
-            
+
             gamePanel.zombie.setStartingPosition();
+
             timer.start();
         }
-       
 
         if (e.getSource() == optionsPanel.hero1) {//added to set a character number
             gamePanel.characterChoosen = 1;
@@ -178,12 +184,15 @@ public class ContainerPanel extends JPanel implements ActionListener {
         if (e.getSource() == optionsPanel.hero3) {
             gamePanel.characterChoosen = 3;
         }
-        /*
-        if (e.getSource() == endPanel.restartButton)
-        {
-        }*/
-        
 
+        // if (e.getSource() == endPanel.myPanel.)
+        //    {
+        //      resetValues();
+        //  }
+        /*
+         if (e.getSource() == endPanel.restartButton)
+         {
+         }*/
         if (e.getSource() == optionsPanel.background1) {
             color = Color.BLUE;
             squareColor = Color.blue;
@@ -203,13 +212,12 @@ public class ContainerPanel extends JPanel implements ActionListener {
             repaint();
             if (gamePanel.button1Used == true && gamePanel.button2Used == true
                     && gamePanel.button3Used == true && gamePanel.button4Used == true || gamePanel.zombieWins == true) {//Determines if all the buttons should be pressed
-                endPanel = new EndPanel();
+
+                endPanel.setBackground(color);
+                gamePanel.setVisible(false);
+                endPanel.setVisible(true);
+
             }
         }
     }
 }
-/*
- * ImageFilter filter = new GrayFilter(true, 50);  
-ImageProducer producer = new FilteredImageSource(colorImage.getSource(), filter);  
-Image mage = Toolkit.getDefaultToolkit().createImage(producer); 
- */
