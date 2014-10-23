@@ -10,6 +10,7 @@ public class GameFrame extends JFrame {
         
         containerPanel = new ContainerPanel();
         JFrame application = new JFrame();
+        application.setTitle("The Zombie Game");
 
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
