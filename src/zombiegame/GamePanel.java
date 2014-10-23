@@ -22,10 +22,10 @@ public class GamePanel extends JPanel implements KeyListener {
     int zombieCurrentY;
     Items item1, item2, item3, item4;
     JButton button1, button2, button3, button4;
-//------------------------------------------------------------------------------GRAESON added for completeing the project
-                                                                        //probably not the best way to do this
-    int characterChoosen = 1;                                           //Rectangles that determine if you have touched the zombie
-    Rectangle rc1, rc2, rc3, rc4;                                       //For covering up the coins
+//-----------------------------------------------------------------------
+                                                                     
+    int characterChosen = 1;                                           //Rectangles that determine if you have touched the zombie
+    Rectangle rc1, rc2, rc3, rc4;                                     
     boolean coinPicked1, coinPicked2, coinPicked3, coinPicked4;
     boolean button1Used, button2Used, button3Used, button4Used;         //Used for if the button is active or not
     boolean zombieWins;
@@ -86,55 +86,60 @@ public class GamePanel extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 //------------------------------------------------------------------------------Painting the correct character        
-        if (characterChoosen == 1) {
+        if (characterChosen == 1) {
             g.drawImage(hero.image, heroCurrentX, heroCurrentY, 50, 50, null);
         }
-        if (characterChoosen == 2) {
+        if (characterChosen == 2) {
             g.drawImage(hero.image2, heroCurrentX, heroCurrentY, 50, 50, null);
         }
-        if (characterChoosen == 3) {
+        if (characterChosen == 3) {
             g.drawImage(hero.image3, heroCurrentX, heroCurrentY, 50, 50, null);
         }
-//------------------------------------------------------------------------------Drawing the coins and setting the rectangles
+//------------------------------------------------------------------------------Drawing the coins
         g.drawImage(zombie.image, zombie.x, zombie.y, 50, 50, null);
 
         // Draw line to separate game field from bucket panel
         g.drawLine(0, 400, 500, 400);
 
         // Draw images on game field
-        g.drawImage(item1.image, item1.x, item1.y, 50, 50, null);
-        rc1 = new Rectangle(item1.x, item1.y, 50, 50);
-
-        g.drawImage(item2.image, item2.x, item2.y, 50, 50, null);
-        rc2 = new Rectangle(item2.x, item2.y, 50, 50);
-
-        g.drawImage(item3.image, item3.x, item3.y, 50, 50, null);
-        rc3 = new Rectangle(item3.x, item3.y, 50, 50);
-
-        g.drawImage(item4.image, item4.x, item4.y, 50, 50, null);
-        rc4 = new Rectangle(item4.x, item4.y, 50, 50);
-//------------------------------------------------------------------------------Colors over the coin
         g.setColor(backgroundColor);
+        
         if (coinPicked1 == true) {
-            //g.fillRect(rc1.x, rc1.y, 50, 50);
-            button1.setEnabled(false);                                          //Grays out the button
-            item1.x = 5000;
+            button1.setEnabled(false);    //Grays out the button
+            item1.x = 5000;               // Moves the button offscreen (since we couldn't figure out a way to delete or un-draw the image)
+        }
+        else // coin has not been picked
+        {
+            g.drawImage(item1.image, item1.x, item1.y, 50, 50, null);
+            rc1 = new Rectangle(item1.x, item1.y, 50, 50);
         }
         if (coinPicked2 == true) {
             
-           // g.fillRect(rc2.x, rc2.y, 50, 50);
-            button2.setEnabled(false);                                          //Grays out the button
+            button2.setEnabled(false); 
             item2.x = 5000;
         }
-        if (coinPicked3 == true) {
-           // g.fillRect(rc3.x, rc3.y, 50, 50);                                 
+        else
+        {
+            g.drawImage(item2.image, item2.x, item2.y, 50, 50, null);
+            rc2 = new Rectangle(item2.x, item2.y, 50, 50);
+        }
+        if (coinPicked3 == true) {                                 
             button3.setEnabled(false);  
-            item3.x = 5000;//Grays out the button
+            item3.x = 5000;             
+        }
+        else
+        {
+            g.drawImage(item3.image, item3.x, item3.y, 50, 50, null);
+            rc3 = new Rectangle(item3.x, item3.y, 50, 50);
         }
         if (coinPicked4 == true) {
-          //  g.fillRect(rc4.x, rc4.y, 50, 50);
-            button4.setEnabled(false);                                          //Grays out the button
+            button4.setEnabled(false); 
             item4.x = 5000;
+        }
+        else
+        {
+            g.drawImage(item4.image, item4.x, item4.y, 50, 50, null);
+            rc4 = new Rectangle(item4.x, item4.y, 50, 50);
         }
         //----------------------------------------------------------------------
     }
@@ -158,25 +163,27 @@ public class GamePanel extends JPanel implements KeyListener {
             button4Used = true;
         }
     }
-
-    public void checkCollisions(int xH, int yH) {                                             //Between the zombie and the player
+    
+    // Check collisions between zombie and player
+    public void checkCollisions(int xH, int yH) {
         Rectangle r1 = new Rectangle(xH, yH, 50, 50);
         Rectangle r2 = new Rectangle(zombie.x, zombie.y, 50, 50);
         if (r1.intersects(r2)) {
-            zombieWins = true;                                    //Should send to EndPanel
+            zombieWins = true;      
         }
     }
 
     void setDifficulty() {
-        //Not used yet
+        // Not used
     }
 
     void setBackground() {
-        //not used
+        // Not used
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+        
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (heroCurrentX < 450) {
                 heroCurrentX += 4;

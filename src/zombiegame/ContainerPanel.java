@@ -117,16 +117,7 @@ public class ContainerPanel extends JPanel implements ActionListener {
     }
 
     public void resetValues() {
-        // Re-enable coin buttons
-
-        gamePanel.button1.setEnabled(true);
-        gamePanel.button2.setEnabled(true);
-        gamePanel.button3.setEnabled(true);
-        gamePanel.button4.setEnabled(true);
         
-        // Reset visibility of coin images
-
-
         // Move hero back to center
         gamePanel.heroCurrentX = 225;
         gamePanel.heroCurrentY = 175;
@@ -135,7 +126,23 @@ public class ContainerPanel extends JPanel implements ActionListener {
         gamePanel.zombie.setStartingPosition();
         gamePanel.zombieWins = false;
 
-        // Reassign coin locations
+        // Reset coin settings
+        gamePanel.coinPicked1 = gamePanel.coinPicked2 = gamePanel.coinPicked3
+                = gamePanel.coinPicked4 = false;
+        gamePanel.button1Used = gamePanel.button2Used = gamePanel.button3Used
+                = gamePanel.button4Used = false;
+        
+        // Move coins back into place
+        gamePanel.item1.x = gamePanel.r.nextInt(300);
+        gamePanel.item2.x = gamePanel.r.nextInt(300);
+        gamePanel.item3.x = gamePanel.r.nextInt(300);
+        gamePanel.item4.x = gamePanel.r.nextInt(300);
+        
+        // Re-enable coin buttons
+        gamePanel.button1.setEnabled(true);
+        gamePanel.button2.setEnabled(true);
+        gamePanel.button3.setEnabled(true);
+        gamePanel.button4.setEnabled(true);
         
         // Reset visibility of all panels
         gamePanel.setVisible(false);
@@ -171,35 +178,40 @@ public class ContainerPanel extends JPanel implements ActionListener {
             }
 
             gamePanel.zombie.setStartingPosition();
-
+            
+            /**
+             * This line of code fixes a problem we had  where the hero
+             * was unable to move after restarting the game.
+             */
+            gamePanel.requestFocusInWindow();
+            
             timer.start();
         }
 
         if (e.getSource() == optionsPanel.hero1) {//added to set a character number
-            gamePanel.characterChoosen = 1;
+            gamePanel.characterChosen = 1;
         }
         if (e.getSource() == optionsPanel.hero2) {
-            gamePanel.characterChoosen = 2;
+            gamePanel.characterChosen = 2;
         }
         if (e.getSource() == optionsPanel.hero3) {
-            gamePanel.characterChoosen = 3;
+            gamePanel.characterChosen = 3;
         }
 
-        // if (e.getSource() == endPanel.myPanel.)
-        //    {
-        //      resetValues();
-        //  }
-        /*
-         if (e.getSource() == endPanel.restartButton)
-         {
-         }*/
+        if (e.getSource() == endPanel.restartButton)
+        {
+            // Restart the game
+            resetValues();
+            repaint();
+        }
+         
         if (e.getSource() == optionsPanel.background1) {
             color = Color.BLUE;
             squareColor = Color.blue;
         }
         if (e.getSource() == optionsPanel.background2) {
             color = Color.YELLOW;
-            squareColor = Color.yellow;
+            //squareColor = Color.yellow;
         }
         if (e.getSource() == optionsPanel.background3) {
             color = Color.GREEN;

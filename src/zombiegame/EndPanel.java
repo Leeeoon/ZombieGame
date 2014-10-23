@@ -30,7 +30,9 @@ public class EndPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == restartButton) {
+        if (e.getSource() == restartButton) 
+        {
+            // this is handled in ContainerPanel
         }
         if (e.getSource() == exitButton) {
             System.exit(0);
